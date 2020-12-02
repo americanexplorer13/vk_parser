@@ -31,6 +31,7 @@ if __name__ == '__main__':
 
     vk = login_in()
     print("PLEASE, WAIT...")
+    target_id = input("Enter friend id: ")
     list_friends = vk.friends.get()['items']
     print(vk.friends.get()['items'])
     list_for_csv = []
@@ -45,7 +46,7 @@ if __name__ == '__main__':
             continue
 
         for post_id in vk.wall.get(owner_id=friend, filter='owner')['items']:
-            if vk.likes.isLiked(user_id=549396642, type='post', owner_id=friend, item_id=post_id['id'])['liked'] == 1:
-                list_for_csv.append(f"user_id: {549396642} liked post: item_id={post_id['id']}!")
+            if vk.likes.isLiked(user_id=target_id, type='post', owner_id=friend, item_id=post_id['id'])['liked'] == 1:
+                list_for_csv.append(f"user_id: {target_id} liked post: item_id={post_id['id']}!")
 
-    pd.DataFrame.from_dict({'likes': list_for_csv}).to_csv(f"vk_likes_{549396642}.csv", index=False)
+    pd.DataFrame.from_dict({'likes': list_for_csv}).to_csv(f"vk_likes_{target_id}.csv", index=False)
