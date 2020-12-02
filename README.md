@@ -10,7 +10,7 @@ vk_session = vk_api.VkApi('__email_vk__', '__password__', auth_handler=auth_hand
 
 and execute the program,
 
-Appear first message, input the code from 2factor auth (If you have it)
+Appear first message, input the code from 2factor auth (If you have it).
 Appear second message, input friend id which we will parse. 
 
 The result of the work will be save in CSV format file. 
